@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="DandyWorksEngine.vcxproj" />
+  <Project Path="DandyWorksEngine.vcxproj" Id="a5bc2551-f00f-47d5-bd5e-234ab871a5e1" />
 </Solution>
