@@ -8,6 +8,7 @@ namespace dwe {
 		dweWindow(int w, int h, std::string t);
 		~dweWindow();
 		bool shouldClose() { return glfwWindowShouldClose(window); }
+		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
 	private:
 		void initWindow();
 		const int width;
