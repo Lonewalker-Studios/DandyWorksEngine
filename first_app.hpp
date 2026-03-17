@@ -1,5 +1,6 @@
 #pragma once
 #include "dwe_window.hpp"
+#include "dwe_pipeline.hpp"
 
 namespace dwe {
 	class firstapp {
@@ -10,5 +11,6 @@ namespace dwe {
 		
 	private:
 		dweWindow window{ WIDTH, HEIGHT, "Test Game" };
+		dwePipeline dwePipeline{"shaders/simple_shader_vert.spv", "shaders/simple_shader_frag.spv"};
 	};
 }
