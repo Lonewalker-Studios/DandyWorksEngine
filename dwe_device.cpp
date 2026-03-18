@@ -114,7 +114,7 @@ void dweDevice::pickPhysicalDevice() {
   if (deviceCount == 0) {
     throw std::runtime_error("Failed to find a device that supports Vulkan!");
   }
-  std::cout << "Device available: " << deviceCount << std::endl;
+  std::cout << "Device(s) available: " << deviceCount << std::endl;
   std::vector<VkPhysicalDevice> devices(deviceCount);
   vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 

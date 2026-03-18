@@ -133,12 +133,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dwe_device.cpp" />
     <ClCompile Include="dwe_pipeline.cpp" />
     <ClCompile Include="dwe_window.cpp" />
     <ClCompile Include="first_app.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dwe_device.hpp" />
     <ClInclude Include="dwe_pipeline.hpp" />
     <ClInclude Include="dwe_window.hpp" />
     <ClInclude Include="first_app.hpp" />
