@@ -24,7 +24,7 @@ namespace dwe {
 		};
 
 		dwePipeline(dweDevice& device, const std::string& vertFilepath, const std::string& fragFilepath, const pipelineConfigInfo& configInfo);
-		~dwePipeline() {}
+		~dwePipeline();
 		dwePipeline(const dwePipeline&) = delete;
 		void operator = (const dwePipeline&) = delete;
 		static pipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
