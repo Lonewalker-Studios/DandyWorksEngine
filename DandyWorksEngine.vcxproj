@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;C:\Users\a\source\repos\DandyWorksEngine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;C:\Users\a\source\repos\DandyWorksEngine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;C:\Users\a\source\repos\DandyWorksEngine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GLFW\3.4\include;C:\VulkanSDK\1.4.341.1\Include;C:\glm;C:\ImGui\1.92.7;C:\Users\a\source\repos\DandyWorksEngine;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,7 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalIncludeDirectories>C:\glfw-3.4\include;C:\glm;C:\VulkanSDK\1.4.341.1\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -151,13 +151,16 @@
   <ItemGroup>
     <ClCompile Include="dwe_device.cpp" />
     <ClCompile Include="dwe_pipeline.cpp" />
+    <ClCompile Include="dwe_swap_chain.cpp" />
     <ClCompile Include="dwe_window.cpp" />
     <ClCompile Include="first_app.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Downloads\dwe_swap_chain.hpp" />
     <ClInclude Include="dwe_device.hpp" />
     <ClInclude Include="dwe_pipeline.hpp" />
+    <ClInclude Include="dwe_swap_chain.hpp" />
     <ClInclude Include="dwe_window.hpp" />
     <ClInclude Include="first_app.hpp" />
   </ItemGroup>
