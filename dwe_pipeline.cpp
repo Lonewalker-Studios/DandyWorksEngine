@@ -4,14 +4,21 @@
 #include <stdexcept>
 #include <cassert>
 #include <vulkan/vulkan.h>
+
 namespace dwe {
 	dwePipeline::dwePipeline(dweDevice& device, const std::string& vertFilepath, const std::string& fragFilepath, const dwePipeline::pipelineConfigInfo& configInfo) : device{ device } {
 		createGraphicsPipeline(vertFilepath, fragFilepath, configInfo);
 	}
 	dwePipeline::~dwePipeline() {
-		vkDestroyShaderModule(device.device(), vertShaderModule, nullptr);
-		vkDestroyPipeline(device.device(), graphicsPipeline, nullptr);
-
+		if (graphicsPipeline != VK_NULL_HANDLE) {
+			vkDestroyPipeline(device.device(), graphicsPipeline, nullptr);
+		}
+		if (vertShaderModule != VK_NULL_HANDLE) {
+			vkDestroyShaderModule(device.device(), vertShaderModule, nullptr);
+		}
+		if (fragShaderModule != VK_NULL_HANDLE) {
+			vkDestroyShaderModule(device.device(), fragShaderModule, nullptr);
+		}
 	}
 	std::vector<char> dwePipeline::readFile(const std::string& filepath) {
 		std::ifstream file{filepath, std::ios::ate | std::ios::binary};
@@ -24,7 +31,7 @@ namespace dwe {
 		file.read(buffer.data(), fileSize);
 		file.close();
 		return buffer;
- }
+	}
 	void dwePipeline::createGraphicsPipeline(const std::string& vertFilepath, const std::string& fragFilepath, const dwePipeline::pipelineConfigInfo& configInfo) {
 		assert(configInfo.pipelineLayout != VK_NULL_HANDLE && "Cannot create graphics pipeline, no pipelineLayout provided in configInfo");
 		assert(configInfo.renderPass != VK_NULL_HANDLE && "Cannot create graphics pipeline, no renderPass provided in configInfo");
@@ -38,15 +45,15 @@ namespace dwe {
 		shaderStages[0].module = fragShaderModule;
 		shaderStages[0].pName = "main";
 		shaderStages[0].flags = 0;
-		shaderStages[0].pNext = nullptr; // Vertex
+		shaderStages[0].pNext = nullptr; // Fragment
 		shaderStages[0].pSpecializationInfo = nullptr;
 		shaderStages[1].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 		shaderStages[1].stage = VK_SHADER_STAGE_VERTEX_BIT;
 		shaderStages[1].module = vertShaderModule;
 		shaderStages[1].pName = "main";
 		shaderStages[1].flags = 0;
-		shaderStages[1].pNext = nullptr;
-		shaderStages[1].pSpecializationInfo = nullptr; // Fragment
+		shaderStages[1].pNext = nullptr; // Vertex
+		shaderStages[1].pSpecializationInfo = nullptr;
 
 		VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
 		vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
@@ -83,7 +90,6 @@ namespace dwe {
 		if (vkCreateGraphicsPipelines(device.device(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to create graphics pipeline");
 		}
-
 	}
 	void dwePipeline::createShaderModule(const std::vector<char>& code, VkShaderModule* shaderModule) {
 		VkShaderModuleCreateInfo createInfo{};
@@ -95,9 +101,12 @@ namespace dwe {
 		}
 	}
 
+	void dwePipeline::bind(VkCommandBuffer commandBuffer) {
+		vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+	}
+
 	dwePipeline::pipelineConfigInfo dwePipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height) {
 		pipelineConfigInfo configInfo{};
-
 
 		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
@@ -111,8 +120,6 @@ namespace dwe {
 
 		configInfo.scissor.offset = { 0, 0 };
 		configInfo.scissor.extent = { width, height };
-
-		
 
 		configInfo.rasterizationInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
 		configInfo.rasterizationInfo.depthClampEnable = VK_FALSE;
@@ -166,8 +173,6 @@ namespace dwe {
 		configInfo.depthStencilInfo.front = {};  // Optional
 		configInfo.depthStencilInfo.back = {};   // Optional
 
-
-
 		return configInfo;
 	}
-} 
+}
