@@ -20,6 +20,7 @@ namespace dwe {
 			glfwPollEvents();
 			drawFrame();
 		}
+		vkDeviceWaitIdle(dweDevice.device());
 	}
 
 	void firstapp::createPipelineLayout() {
