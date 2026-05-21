@@ -70,5 +70,8 @@
     <None Include="CompileShaders.bat">
       <Filter>Tools</Filter>
     </None>
+    <None Include="CleanCompiledShaders.bat">
+      <Filter>Tools</Filter>
+    </None>
   </ItemGroup>
 </Project>

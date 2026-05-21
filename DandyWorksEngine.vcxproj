@@ -193,6 +193,7 @@
     <ClInclude Include="first_app.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CleanCompiledShaders.bat" />
     <None Include="CompileShaders.bat" />
     <None Include="simple_shader.frag" />
     <None Include="simple_shader.vert" />
