@@ -53,9 +53,6 @@
     <ClInclude Include="dwe_device.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Downloads\dwe_swap_chain.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="dwe_swap_chain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

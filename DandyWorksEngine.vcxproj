@@ -185,7 +185,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Downloads\dwe_swap_chain.hpp" />
     <ClInclude Include="dwe_device.hpp" />
     <ClInclude Include="dwe_pipeline.hpp" />
     <ClInclude Include="dwe_swap_chain.hpp" />
