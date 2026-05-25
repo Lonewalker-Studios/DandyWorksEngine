@@ -1,4 +1,5 @@
 if not exist "shaders" mkdir "shaders"
-C:\VulkanSDK\1.4.341.1\Bin\glslc.exe simple_shader.vert -o shaders\simple_shader_vert.spv
-C:\VulkanSDK\1.4.341.1\Bin\glslc.exe simple_shader.frag -o shaders\simple_shader_frag.spv
+:: The "Bin" folder in your Vulkan SDK installation MUST be added to your system's environment variables to make this batch script work.
+glslc simple_shader.vert -o shaders\simple_shader_vert.spv
+glslc simple_shader.frag -o shaders\simple_shader_frag.spv
 pause
