@@ -1,3 +1,4 @@
+#define GLFW_DLL
 #include "dwe_window.hpp"
 #include <stdexcept>
 namespace dwe {
