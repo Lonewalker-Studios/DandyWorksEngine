@@ -71,4 +71,7 @@
       <Filter>Tools</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="lib\GLFW\glfw3.dll" />
+  </ItemGroup>
 </Project>
