@@ -72,6 +72,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="lib\GLFW\glfw3.dll" />
+    <CopyFileToFolders Include="lib\GLFW\glfw3.dll">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
